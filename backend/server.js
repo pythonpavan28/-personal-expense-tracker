@@ -6,7 +6,7 @@ const categoryRoutes = require('./routes/categoryRoutes');
 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Connecting to MongoDB
 connectDB();
@@ -15,6 +15,9 @@ connectDB();
 app.use(express.json());
 
 // Routes
+app.get("/", (req,res) => {
+    res.status(200).send("Hello from the server! you need to login to access all the apis")
+})
 app.use('/api/user',userRoutes)
 app.use('/api', transactionRoutes);
 app.use('/api', categoryRoutes);
